@@ -1,0 +1,136 @@
+<!DOCTYPE html?
+<html>
+	<head>
+	<style>
+			body {
+			
+				background-color :  #e6f9ff;
+			}
+			
+			.mydiv{
+				
+				margin: 0% 33% 33% 33%;
+				
+			}
+			.canvas{
+					margin-left: 3.33%;
+			
+			}
+			.button1 {
+					margin-top : 1%;
+					margin-left: 9.33%;
+			
+			}
+			
+			
+			.valid {
+						margin-left : 3.33%;
+					
+					}
+	
+	
+			
+	
+	</style>
+	
+	<script>
+		
+		
+		function captcha_generate()
+		{
+			var alpha = new Array('1', '2' , '3', '4', '5', '6' , '7','8','9','10','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U',
+								'V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'
+								,'r','s','t','u','v','w','x','y','z');
+			var a=alpha[Math.floor(Math.random() * alpha.length)];
+			var b = alpha[Math.floor(Math.random() * alpha.length)];
+			var c = alpha[Math.floor(Math.random() * alpha.length)];
+			var d = alpha[Math.floor(Math.random() * alpha.length)];
+			var e = alpha[Math.floor(Math.random() * alpha.length)];
+			var f = alpha[Math.floor(Math.random() * alpha.length)];
+			var ans = a+b+c+d+e+f;
+			
+			return ans;
+			
+		}
+		
+		
+		
+		function validate_captcha()
+		{
+				var a= document.getElementById("p1").value;
+				var b= document.getElementById("captcha").value;
+				if ( a == b){
+						document.getElementById("invalid").style.display = "None";
+						document.getElementById("valid").style.display = "block";
+				}
+				else
+				{
+					document.getElementById("valid").style.display = "None"
+					document.getElementById("invalid").style.display = "block";
+				}
+		
+		
+		}
+		
+		
+	</script>
+	
+	</head>
+	<body>
+	
+	<div class ="mydiv">
+	
+			<div class = "canvas">
+				<canvas class = "canva" id = "canvas1" width = "120" height="80" style="border: 1px solid black;"> </canvas> 
+				<p id = "p1"> </p>
+				
+				<script> 	var c = document.getElementById("canvas1");
+							var ctx = c.getContext("2d")
+							
+							
+							ctx.moveTo(0 , 0);
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.lineTo(Math.floor(Math.random() * 120),Math.floor(Math.random() * 80));
+							ctx.arc(Math.floor(Math.random() * 100), Math.floor(Math.random() * 120), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), 2 * Math.PI);
+							
+							
+							
+							// Fill with gradient
+							
+							
+							ctx.font = "30px Calibri";
+							ctx.value = captcha_generate();
+							document.getElementById("p1").value = ctx.value;
+							ctx.fillText(ctx.value[0], 10, 50);
+						
+							ctx.fillText(ctx.value[1], 20, 50);
+							ctx.fillText(ctx.value[2], 34, 50);
+							ctx.fillText(ctx.value[3], 44, 50);
+							ctx.fillText(ctx.value[4], 54, 50);
+							ctx.fillText(ctx.value[5], 64, 50);
+						
+							ctx.stroke();
+				</script>
+				
+			</div>
+				<div class ="input">
+					<input type = "text" class = "captcha1" id = "captcha" >
+				</div>
+				
+				<div class ="button1">
+					<button class = "val" id = "button" onclick = "validate_captcha()"> Submit </button>
+					<div class = "validi">
+							<p id = "valid" style= "display:none"> Valid </p>
+							<p id = "invalid"style= "display:none"> Invalid </p>
+					</div>
+				</div>
+	</div>
+			
+	</body>
+</html>
