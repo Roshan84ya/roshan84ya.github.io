@@ -67,6 +67,12 @@
 				{
 					document.getElementById("valid").style.display = "None"
 					document.getElementById("invalid").style.display = "block";
+					document.getElementById("invalid1").style.display = "block";
+					function reload() {
+						document.location.reload();
+					}
+
+						setTimeout(reload, 500);
 				}
 		
 		
@@ -127,7 +133,8 @@
 					<button class = "val" id = "button" onclick = "validate_captcha()"> Submit </button>
 					<div class = "validi">
 							<p id = "valid" style= "display:none"> Valid </p>
-							<p id = "invalid"style= "display:none"> Invalid </p>
+							<p id = "invalid"style= "display:none"> Invalid  </p>
+							<p id = "invalid1"style= "display:none"> Refreshing.... </p>
 					</div>
 				</div>
 	</div>
